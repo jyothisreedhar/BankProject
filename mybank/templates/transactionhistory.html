@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-4">
+        <div class="col-4">
+            <div class="container">
+                <h1>Credit Transactions</h1>
+                {%for transaction in credit_transactions%}
+                <h3>Amount :{{transaction.amount}}<br>
+                    Date: {{transaction.date}}<br>
+                    AccNo: {{transaction.to_accno}}<br>
+                    Remarks: {{transaction.remarks}}<br>
+                </h3>
+                {% endfor %}
+                <h1>Debit Transactions</h1>
+                {%for transaction in debit_transactions%}
+                <h3>Amount :{{transaction.amount}}<br>
+                    Date: {{transaction.date}}<br>
+                    AccNo: {{transaction.to_accno}}<br>
+                    Remarks: {{transaction.remarks}}<br>
+                </h3>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

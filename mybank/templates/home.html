@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Welcome {{request.user}}</h1>
+<div>
+    {% for message in messages %}
+    <h2>{{message}}</h2>
+    {% endfor %}
+</div>
+<div id="result">
+
+</div>
+{% if not flag %}
+<a href="{%url 'account'%}">Create account</a>
+{% endif %}
+<a href="{%url 'transactions' %}">Fund Transfer</a>
+<a href="{%url 'balance' %}">View Balance</a>
+<button onclick="getBalance()">getbal</button>
+<a href="{%url 'history' %}">Payment History</a>
+</body>
+<script>
+function populate(object){
+let html_data=`<h1>${object.balance}</h1>`
+document.querySelector("#result").innerHTML=html_data
+}
+    function getBalance(){
+        console.log("hello");
+        fetch(" http://127.0.0.1:8000/bank/enq").
+        then(res=>res.json()).
+        then(data=>populate(data)).catch(err=>console.log(err));
+   }
+
+</script>
+</html>
